@@ -8,12 +8,12 @@ class House_Location(models.Model):
                             unique=True)
 
     class Meta:
-        ordering = ['name']
-        indexes = [
-            models.Index(fields=['name']),
-        ]
-        verbose_name = 'location'
-        verbose_name_plural = 'locations'
+        ordering = ['location_name']
+     #   indexes = [
+     #      models.Index(fields=['location_name']),
+     #   ]
+     #   verbose_name = 'location'
+     #   verbose_name_plural = 'locations'
 
 
     def __str__(self):
@@ -36,14 +36,14 @@ class House_Details(models.Model):
     slug = models.SlugField(max_length=255)
     image = models.ImageField(upload_to='products/%Y/%m/%d')
     description = models.TextField()
-    price = models.DecimalField(max_digits=10,
+    rent_amount = models.DecimalField(max_digits=10,
                                 decimal_places=2)
     available = models.CharField(max_length=1, choices=AVAILABILITY_CHOICES)
     posted = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
     class Meta:
-        ordering = ['name']
+        ordering = ['category_name']
         indexes = [
             models.Index(fields=['id', 'slug']),
             models.Index(fields=['category_name']),
