@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class House_Location(models.Model):
@@ -9,15 +10,19 @@ class House_Location(models.Model):
 
     class Meta:
         ordering = ['location_name']
-     #   indexes = [
-     #      models.Index(fields=['location_name']),
-     #   ]
-     #   verbose_name = 'location'
-     #   verbose_name_plural = 'locations'
+        indexes = [
+           models.Index(fields=['location_name']),
+       ]
+        verbose_name = 'location'
+        verbose_name_plural = 'locations'
 
 
     def __str__(self):
         return self.location_name
+    
+    def get_absolute_url(self):
+        return reverse('Agency:house_list_by_location',
+                       args=[self.slug])
     
 class House_Details(models.Model):
     CATEGORY_CHOICES = [
@@ -30,7 +35,7 @@ class House_Details(models.Model):
         ("N", "No")
     ]
     location = models.ForeignKey(House_Location,
-                                 related_name='locations',
+                                 related_name='details',
                                  on_delete=models.CASCADE)
     category_name = models.CharField(max_length=4, choices=CATEGORY_CHOICES)
     slug = models.SlugField(max_length=255)
@@ -52,3 +57,7 @@ class House_Details(models.Model):
 
     def __str__(self):
         return self.category_name
+    
+    def get_absolute_url(self):
+        return reverse('Agency:house_detail',
+                       args=[self.id, self.slug])
