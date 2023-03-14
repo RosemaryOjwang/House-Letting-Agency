@@ -15,5 +15,5 @@ class House_DetailsAdmin(admin.ModelAdmin):
     list_editable = ['rent_amount', 'available']
     prepopulated_fields = {'slug': ('category_name',)}
 
-admin.site.register(Image)
+admin.site.register(House_Location, House_Details, Image)
 

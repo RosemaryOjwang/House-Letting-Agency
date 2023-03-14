@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import House_Location, House_Details, Image
-from .forms import HouseForm, ImageForm
+from .forms import HouseForm, ImageForm, House_LocationForm
 from django.contrib import messages
 
 # Create your views here.
@@ -27,6 +27,11 @@ def house_detail(request, id, slug):
                   'Agency/house-detail/detail.html',
                   {'detail': detail})
 
+
+
+def index(request):
+    context = {}
+    return render(request, 'index.html', context)
 
 def create_product(request):
     house_form =  HouseForm()
