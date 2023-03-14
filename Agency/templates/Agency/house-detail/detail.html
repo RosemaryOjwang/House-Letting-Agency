@@ -1,0 +1,28 @@
+{% extends "Agency/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ detail.category_name }}
+{% endblock %}
+
+{% block content %}
+    <div class="description-container">
+        <div class="product-detail">
+            <img src="{% if detail.thumbnail %}{{ detail.thumbnail.url }}{% else %}
+            {% static "img/no_image.png" %}{% endif %}">
+            
+        </div>
+        <div class="description">
+            <h1>{{ detail.category_name }}</h1>
+            <h2>
+                <a href="{{ detail.location.get_absolute_url }}">
+                    {{ detail.location }}
+                </a>
+            </h2>
+            <p class="price">KSh{{ detail.rent_amount }} /month</p>
+            {{ detail.description|linebreaks }}
+        </div>    
+    </div>
+    <hr>
+    {% include "create.html" %}
+{% endblock %}
