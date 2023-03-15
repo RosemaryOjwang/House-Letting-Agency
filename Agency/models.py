@@ -63,7 +63,9 @@ class House_Details(models.Model):
                         args=[self.id, self.slug])
 
 class Image(models.Model):
-    detail = models.ForeignKey(House_Details, on_delete=models.CASCADE)
+    detail = models.ForeignKey(House_Details, 
+                               on_delete=models.CASCADE,
+                               related_name='house')
     images = models.ImageField(upload_to='img')
 
     def __str__(self):

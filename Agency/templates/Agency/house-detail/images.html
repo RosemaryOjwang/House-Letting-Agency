@@ -1,0 +1,12 @@
+{% extends "Agency/base.html" %}
+
+{% block title %}Add House Imagest{% endblock %} 
+
+{% block content %}
+    {% if comment %}
+        <h2>Your images have been added.</h2>
+        <p><a href="{{ detail.get_absolute_url }}">Back to the post</a></p>
+    {% else %}
+        {% include "Agency/house-detail/includes/images_form.html" %}
+    {% endif %}
+{% endblock %}
