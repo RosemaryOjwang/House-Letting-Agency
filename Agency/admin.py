@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import House_Location, House_Details, Image
+from .models import House_Location, House_Details
 
 
 # Register your models here.
@@ -15,5 +15,7 @@ class House_DetailsAdmin(admin.ModelAdmin):
     list_editable = ['rent_amount', 'available']
     prepopulated_fields = {'slug': ('category_name',)}
 
-admin.site.register(Image)
+#@admin.register(Image)
+#class ImageAdmin(admin.ModelAdmin):
+#    list_display = ['images']
 

@@ -24,6 +24,17 @@ class House_Location(models.Model):
         return reverse('Agency:house_list_by_location',
                        args=[self.slug])
     
+#class Image(models.Model):
+#    images = models.FileField()
+#
+#    def __str__(self):
+#        return self.images
+#    
+#    def get_absolute_url(self):
+#        return reverse('Agency:house_images_detail',
+#                        args=[self.id, self.slug])
+
+    
 class House_Details(models.Model):
     #CATEGORY_CHOICES = [
    #    ("beds", "Bedsitter"),
@@ -34,10 +45,12 @@ class House_Details(models.Model):
    # ]
     location = models.ForeignKey(House_Location,
                                  related_name='details',
+                                 db_constraint=True,
                                  on_delete=models.CASCADE)
     category_name = models.CharField(max_length=255)#, choices=CATEGORY_CHOICES)
     slug = models.SlugField(max_length=255)
     thumbnail = models.ImageField(upload_to='img')
+    #images = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='house_view')
     #image = models.ImageField(upload_to='products/%Y/%m/%d')
 
     description = models.TextField()
@@ -62,11 +75,3 @@ class House_Details(models.Model):
         return reverse('Agency:house_detail',
                         args=[self.id, self.slug])
 
-class Image(models.Model):
-    detail = models.ForeignKey(House_Details, 
-                               on_delete=models.CASCADE,
-                               related_name='house')
-    images = models.ImageField(upload_to='img')
-
-    def __str__(self):
-        return self.detail.category_name

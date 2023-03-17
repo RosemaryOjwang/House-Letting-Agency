@@ -10,6 +10,13 @@
         <div class="product-detail">
             <img src="{% if detail.thumbnail %}{{ detail.thumbnail.url }}{% else %}
             {% static "img/no_image.png" %}{% endif %}">
+            <!--<div>
+                <h4 class="head-more-images">More images</h4><hr>
+                <img class="more-images" src="{% if house.images %}{{ house.images.url }}{% else %}
+                #{% static "img/no_image.png" %}{% endif %}">
+                #{% include "Agency/house-detail/includes/images_form.html" %}
+            <!--</div>-->
+            
             
         </div>
         <div class="description">
@@ -21,8 +28,8 @@
             </h2>
             <p class="price">KSh{{ detail.rent_amount }} /month</p>
             {{ detail.description|linebreaks }}
-        </div>    
+        </div>
     </div>
     <hr>
-    {% include "Agency/house-detail/includes/images_form.html" %}
+    
 {% endblock %}
