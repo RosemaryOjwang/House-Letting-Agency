@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from phone_field import PhoneField
-
 
 # Create your models here.
 class House_Location(models.Model):
@@ -29,11 +27,12 @@ class House_Details(models.Model):
                                  on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to='img')
-    description = models.TextField(max_length=255)
+    description = models.TextField(max_length=1000)
     monthly_rent = models.DecimalField(max_digits=10,
                                        decimal_places=2)
     available = models.BooleanField(default=True)
-    owners_contact = PhoneField(help_text='Enter contact phone number')
+    owners_contact = models.DecimalField(max_digits=10,
+                                         decimal_places=0)
     posted = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
