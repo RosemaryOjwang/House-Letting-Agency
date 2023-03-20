@@ -9,9 +9,9 @@ class House_Location(models.Model):
                             unique=True)
     
     class Meta:
-        ordering = ['location']
+        ordering = ['locationName']
         indexes = [
-            models.Index(fields=['location']),
+            models.Index(fields=['locationName']),
         ]
         verbose_name = 'House Location'
         verbose_name_plural = 'House Locations'
