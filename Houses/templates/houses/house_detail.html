@@ -1,0 +1,13 @@
+{% extends 'Agency/base.html' %}
+
+{% block title %}{{ house.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{ house.title }}</h1>
+    {% if house.description %}
+        <p>
+            {{ house.description }}
+        </p>
+    {% endif %}    
+    <h4>KSh.{{ house.monthly_rent }}</h4>
+{% endblock %}

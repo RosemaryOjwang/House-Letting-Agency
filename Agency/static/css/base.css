@@ -158,6 +158,10 @@ ul.errorlist {
     margin:0;
     padding:0;
 }
+.flex {
+    display: flex;
+    float:left;
+}
 
 #sidebar ul li {
     margin:0;
