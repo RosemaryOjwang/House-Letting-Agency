@@ -10,5 +10,4 @@ def house_detail(request, id, slug):
                               available=True)
     return render(request,
                   'houses/house_detail.html',
-                  {'house': house}
-                  )
+                  {'house': house})
