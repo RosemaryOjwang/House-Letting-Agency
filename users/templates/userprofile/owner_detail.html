@@ -1,0 +1,9 @@
+{% extends 'Agency/base.html' %}
+
+{% block title %}
+    {% firstof house.user.get_full_name user.username %}
+{% endblock %}
+
+{% block content %}
+    {% firstof user.get_full_name user.username %}
+{% endblock %}

@@ -5,5 +5,5 @@ from django.contrib.auth.models import User
 def owner_detail(request, pk):
     user = User.objects.get(pk=pk)
 
-    return render(request, 'userprofile/agent_detail.html',
+    return render(request, 'userprofile/owner_detail.html',
                   {'user': user})

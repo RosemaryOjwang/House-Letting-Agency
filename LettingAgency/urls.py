@@ -20,9 +20,10 @@ from django.urls import path, include
 from Agency.views import frontpage, about
 
 urlpatterns = [
+    path('about/', about, name='about'),
     path('admin/', admin.site.urls),
+    path('', include('users.urls')),
     path('', frontpage, name='frontpage'),
-    path('about/', about, name='about'), 
     path('', include('Agency.urls', namespace='Agency')),
     path('', include('Houses.urls', namespace='Houses')),
     
