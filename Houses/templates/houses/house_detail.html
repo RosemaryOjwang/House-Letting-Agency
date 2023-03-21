@@ -7,8 +7,9 @@
 
 {% block content %}
     <div class="product-detail">
-        <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}
-        {% static "img/no_image.png" %}{% endif %}">
+        {% if house.thumbnail %}
+            <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
+        {% endif %}
         <h1>{{ house.title }}</h1>
         
         </h2>
