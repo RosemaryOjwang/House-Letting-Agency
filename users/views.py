@@ -7,3 +7,6 @@ def owner_detail(request, pk):
 
     return render(request, 'userprofile/owner_detail.html',
                   {'user': user})
+
+def register_owner(request):
+    return render(request, 'userprofile/register_owner.html')
