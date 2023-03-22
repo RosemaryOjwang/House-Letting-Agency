@@ -13,19 +13,18 @@ class House_Location(models.Model):
         indexes = [
             models.Index(fields=['locationName']),
         ]
-        verbose_name = 'House Location'
-        verbose_name_plural = 'House Locations'
+        verbose_name = 'Location'
+        verbose_name_plural = 'Locations'
 
     def __str__(self):
         return self.locationName
     
     def get_absolute_url(self):
-        return reverse('Agency:house_list_by_location',
+        return reverse('Agency:house_list_by_locationName',
                        args=[self.slug])
     
 class House_Details(models.Model):
     user = models.ForeignKey(User,
-                             related_name='locations',
                              on_delete=models.CASCADE)
     location = models.ForeignKey(House_Location,
                                  on_delete=models.CASCADE)
@@ -48,5 +47,4 @@ class House_Details(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse('Houses:house_detail',
-                       args=[self.id, self.slug])
+        return reverse('Houses:house_detail', args=[self.id, self.slug])

@@ -10,4 +10,6 @@ class House_LocationAdmin(admin.ModelAdmin):
 @admin.register(House_Details)
 class House_DetailsAdmin(admin.ModelAdmin):
     list_display = ['title', 'monthly_rent', 'owners_contact', 'available', 'updated']
+    list_filter = ['available', 'posted', 'updated']
+    list_editable = ['monthly_rent', 'available']
     prepopulated_fields = {'slug': ('title',)}

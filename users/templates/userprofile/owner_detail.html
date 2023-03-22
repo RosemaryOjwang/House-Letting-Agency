@@ -5,5 +5,16 @@
 {% endblock %}
 
 {% block content %}
-    {% firstof user.get_full_name user.username %}
+    <h1>{% firstof house.user.get_full_name user.username %}</h1>
+    
+    <div>
+
+        {% for house in houses.user.all %}
+            {% if house.thumbnail %}
+                <img src="{{ house.thumbnail.url }}" alt="Image of {{ house.title }}">
+            {% endif %}
+            <h2>{{ house.title }}</h2>
+            <p>{{ house.monthly_rent }}</p>
+        {% endfor %}
+    </div>
 {% endblock %}
