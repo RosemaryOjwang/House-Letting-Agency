@@ -360,3 +360,63 @@ form div.field {
     color: #ffffff;
     font-size: 1.2em;
 }
+
+.line   {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 22%;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    line-height: 0.1em
+}
+#signup, .login  {
+    border: none;
+}
+#signup > a {
+    color: #FFFFFF;
+}
+.login {
+    margin-top: 150px;
+    margin-left: -323px;
+}
+#signup1 {
+    margin-bottom: 50px;
+    margin-left: -325px;
+}
+.alogin{
+    color: #ffffff;
+}
+.return-btn{
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
+    border: none;
+}
+.return-btn > a {
+    color: #FFFFFF;
+}
+p span  {
+    background: #fff;
+    padding: 0 10px;
+}
+.login-home{
+    color: blue;
+}
+button{
+    font-weight:bold;
+    background:#00abff;
+    color:#fff;
+    padding:10px 20px;
+    font-size:14px;
+    text-transform:uppercase; 
+    border-radius: 15px;
+}
+a, li{
+    display:inline;
+    text-decoration: none;
+    justify-content: space-between;
+}
+
+
+form {
+    margin-left: 10%;
+}

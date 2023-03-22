@@ -6,13 +6,6 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-    Hi {{ user.username }}!
-    <p><a href="{% url 'logout' %}"><span class="login-home">Log Out</span></a></p>
-{% else %}
-    <p>You are not logged in.</p>
-    <a  href="{% url 'login' %}"><span class="login-home">Log In</span></a>
-{% endif %}
     <h1>{% firstof house.user.get_full_name user.username %}</h1>
     
     <div>

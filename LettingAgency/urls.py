@@ -24,8 +24,8 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('admin/', admin.site.urls),
     path('post_house/', post_house, name='post_house'),
-    path('users/', include('django.contrib.auth.urls')),
-    path('', include('users.urls')),  
+    path("accounts/", include('django.contrib.auth.urls')),
+    path('', include('accounts.urls')),  
     path('', include('Houses.urls', namespace='Houses')),  
     path('', include('Agency.urls', namespace='Agency')),
     

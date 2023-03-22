@@ -26,11 +26,11 @@
             {% endif %}</h1>
             {% for house in houses %}
                 <div class="item">
-                    <a href="{{ house.get_absolute_url }}">
+                    <a class="afrontpage" href="{{ house.get_absolute_url }}">
                         <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
             static "img/no_image.png" %}{% endif %}">
                     </a>
-                    <a href="{{ house.get_absolute_url }}">{{ house.title }}</a>
+                    <a class="afrontpage" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
                     <br>
                     KSh{{ house.monthly_rent }}
                 </div>
