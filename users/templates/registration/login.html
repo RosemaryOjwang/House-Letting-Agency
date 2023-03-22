@@ -1,0 +1,15 @@
+{% extends 'Agency/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button class="login" type="submit">Login</button>
+        <p class="line"><span>or</span></p>
+        <button id="signup"><a href="{% url "signup" %}">Sign Up</a></button>
+    </form>
+{% endblock %}
