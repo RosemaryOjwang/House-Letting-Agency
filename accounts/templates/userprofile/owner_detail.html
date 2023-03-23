@@ -11,10 +11,11 @@
     <div>
 
         {% for house in houses.user.all %}
-            {% if house.thumbnail %}
-                <img src="{{ house.thumbnail.url }}" alt="Image of {{ house.title }}">
-            {% endif %}
-            <h2>{{ house.title }}</h2>
+        <a class="afrontpage" href="{{ house.get_absolute_url }}">
+            <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
+static "img/no_image.png" %}{% endif %}">
+        </a>
+        <h2>{{ house.title }}</h2>
             <p>{{ house.monthly_rent }}</p>
         {% endfor %}
     </div>

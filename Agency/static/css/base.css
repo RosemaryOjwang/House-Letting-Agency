@@ -420,3 +420,15 @@ a, li{
 form {
     margin-left: 10%;
 }
+.posthousehere, .posthousehere > a {
+    border: none;
+    color: #FFFFFF;
+}
+.edithousehere {
+    border: none;
+    margin-left: 50px;
+
+}
+.edithousehere > a {
+    color: #FFFFFF;
+}

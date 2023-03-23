@@ -5,6 +5,9 @@
 {% block content %}
 {% if user.is_authenticated %}
     Hi {{ user.username }}!
+    <br>
+    <button class="posthousehere"><a href="#">Add House</a></button><button class="edithousehere"><a href="#">Edit House</a></button>
+
     <p><a class="alogin" href="{% url "logout" %}"><span class="login-home">Log Out</span></a></p>
 {% else %}
     <p>You are not logged in.</p>
