@@ -10,10 +10,10 @@
         <div id="sidebar">
             <h3>Locations</h3>
             <ul>
-                <li {% if not locations %}class="selected"{% endif %}>
+                <li {% if not location %}class="selected"{% endif %}>
                     <a href="{% url "Agency:house_list" %}">All</a>
                 </li>
-                {% for l in categories %}
+                {% for l in locations %}
                     <li {% if location.slug == l.slug %}class="selected"
                     {% endif %}>
                         <a href="{{ l.get_absolute_url }}">{{ l.locationName }}</a>

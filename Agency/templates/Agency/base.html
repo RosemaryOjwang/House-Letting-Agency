@@ -10,24 +10,21 @@
 </head>
 <body>
     <nav>
-        <div class="logo">
-            <a href="/">Kamayuje</a>
-        </div>
-        <div class="menu">
             <a href="{% url "about" %}">About</a>
-        </div>
+            <a href="{% url "post_house" %}">Post a house</a>
+            <a href="/">Home</a>            
     </nav>
-    <div>
+    <h1 class="co-name">Kamayuje House Letting Agency</h1>
+
+    <div id="content">
         {% block content %}
         {% endblock %}
     </div>
     <br>
-    <hr>
-    <footer>
+    <!--<footer>
         <h3>Kamayuje House Letting Agency</h3>
         <br>
-        <hr>
-        <a href="{% url "post_house" %}">Post a house</a>
-    </footer>
+        
+    </footer>-->
 </body>
 </html>

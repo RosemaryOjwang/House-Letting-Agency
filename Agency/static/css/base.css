@@ -403,7 +403,7 @@ p span  {
 }
 button{
     font-weight:bold;
-    background:#00abff;
+    background: blue;
     color:#fff;
     padding:10px 20px;
     font-size:14px;
@@ -419,6 +419,7 @@ a, li{
 
 form {
     margin-left: 10%;
+    border: double 3px blue;
 }
 .posthousehere, .posthousehere > a {
     border: none;
@@ -431,4 +432,59 @@ form {
 }
 .edithousehere > a {
     color: #FFFFFF;
+}
+nav {
+    width: 100vw;
+    height: 10vh;
+    background-color: blue;
+    
+}
+nav > a {
+    float: right;
+    margin-right: 30px;
+    color: #FFFFFF;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    justify-content: space-between;
+
+}
+nav > a:hover {
+    font-size: 1.5em;
+    color: #FFFFFF;
+}
+.co-name {
+    text-align: center;
+}
+.logout {
+    background: red;
+    border: none;
+}
+.logout > a {
+    color: #FFFFFF;
+}
+.my-houses {
+    float: left;
+    width: 20%;
+}
+.my-housesTitle {
+    width: 200px;
+    text-align: justify;
+}
+
+.my-housesImg {
+    width: 200px;
+    height: 150px;
+}
+.addHouseButton {
+    margin-top: 300px;
+    border: none;
+}
+h1, h3 {
+    text-align: center;
+}
+.description {
+    margin-top: 10px;
+    margin-right: 600px;
+    border: solid 2px blue;
 }

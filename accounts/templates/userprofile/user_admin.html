@@ -4,20 +4,32 @@
 
 {% block content %}
     <h1>User Admin Site</h1>
-    <a href="{% url "add_house" %}">Add House</a>
+    {% if user.is_authenticated %}
+         Hi {{ user.username }}!
+        <br>    
+
+        <button class="logout"><a href="{% url "logout" %}">Log Out</a></button>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a class="alogin" href="{% url "login" %}"><span class="login-home">Log In</span></a>
+    {% endif %}
+
+    <button class="posthousehere"><a href="{% url "add_house" %}">Add House</a></button><button class="edithousehere"><a href="#">Edit House</a></button>
+    
     <h2>My Houses</h2>
     {% if request.user.houses.all %}
         {% for house in request.user.houses.all %}
-                <div class="item">
+                <div class="my-houses">
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">
-                        <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
+                        <img class="my-housesImg" src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
             static "img/no_image.png" %}{% endif %}">
                     </a>
-                    <a class="afrontpage" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
+                    <br>
+                    <a class="my-housesTitle" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
                     <br>
                     KSh{{ house.monthly_rent }}
                 </div>
-            {% endfor %}
+        {% endfor %}
     {% else %}
         <p>You've not added any houses...</p>
     {% endif %}

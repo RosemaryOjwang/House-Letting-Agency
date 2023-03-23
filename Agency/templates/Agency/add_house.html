@@ -3,12 +3,13 @@
 {% block title %}Add House{% endblock %}
 
 {% block content %}
-    <h1>Add House</h1>
+    
     <form method="post" actions="." enctype="multipart/form-data">
+        <h3>Add House</h3>
         {% csrf_token %}
 
         {{ form.as_p }}
 
-        <button>Submit</button>
+        <button class="addHouseButton">Submit</button>
     </form>
 {% endblock %}
