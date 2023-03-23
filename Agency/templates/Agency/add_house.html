@@ -1,0 +1,14 @@
+{% extends "Agency/base.html" %}
+
+{% block title %}Add House{% endblock %}
+
+{% block content %}
+    <h1>Add House</h1>
+    <form method="post" actions="." enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button>Submit</button>
+    </form>
+{% endblock %}

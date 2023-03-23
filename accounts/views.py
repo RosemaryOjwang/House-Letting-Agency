@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.utils.text import slugify
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -24,4 +25,21 @@ def user_admin(request):
 
 @login_required
 def add_house(request):
-    return render(request, 'Agency/add_house.html')
+    if request.method == "POST":
+        form = House_DetailsForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            title = request.POST.get('title')
+            slug = slugify(title)
+
+            house = form.save(commit=False)
+            house.user = request.user
+            house.slug = slug
+            house.save()
+
+            return redirect('user_admin')
+    else:
+        form = House_DetailsForm()
+
+    return render(request, 'Agency/add_house.html',
+                  {'form': form})
