@@ -1,18 +1,13 @@
 {% extends 'Agency/base.html' %}
 
-{% block title %}
-    {% firstof house.user.get_full_name user.username %}
-{% endblock %}
+{% block title %}User Admin Site{% endblock %}
 
 {% block content %}
-
-    <h1>{% firstof house.user.get_full_name user.username %}</h1>
-    
-    <div>
-
-        <h2>My Houses</h2>
-    {% if user.houses.all %}
-        {% for house in user.houses.all %}
+    <h1>User Admin Site</h1>
+    <a href="{% url "add_house" %}">Add House</a>
+    <h2>My Houses</h2>
+    {% if request.user.houses.all %}
+        {% for house in request.user.houses.all %}
                 <div class="item">
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">
                         <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
@@ -27,5 +22,4 @@
         <p>You've not added any houses...</p>
     {% endif %}
 
-    </div>
 {% endblock %}

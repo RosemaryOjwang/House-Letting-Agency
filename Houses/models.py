@@ -24,7 +24,8 @@ class House_Location(models.Model):
                        args=[self.slug])
     
 class House_Details(models.Model):
-    user = models.ForeignKey(User,
+    user = models.ForeignKey(User, 
+                             related_name='houses',
                              on_delete=models.CASCADE)
     location = models.ForeignKey(House_Location,
                                  on_delete=models.CASCADE)
