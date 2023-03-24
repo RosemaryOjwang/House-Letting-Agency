@@ -13,8 +13,6 @@ def frontpage(request):
 def about(request):
     return render(request, 'Agency/about.html')
 
-def post_house(request):
-    return render(request, 'Agency/post_house.html' )
 
 def house_list(request, location_slug=None):
     location = None

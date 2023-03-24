@@ -17,13 +17,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from Agency.views import frontpage, about, post_house
+from Agency.views import frontpage, about
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
     path('about/', about, name='about'),
     path('admin/', admin.site.urls),
-    path('post_house/', post_house, name='post_house'),
     path("accounts/", include('django.contrib.auth.urls')),
     path('', include('accounts.urls')),  
     path('', include('Houses.urls', namespace='Houses')),  
