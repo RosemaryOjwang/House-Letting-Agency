@@ -17,6 +17,12 @@
     <button class="posthousehere"><a href="{% url "add_house" %}">Add House</a></button>
     
     <h2>My Houses</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <h4 class="message">{{ message }}</h4>
+        {% endfor %}
+    {% endif %}
+
     {% if request.user.houses.all %}
         {% for house in request.user.houses.all %}
                 <div class="my-houses">

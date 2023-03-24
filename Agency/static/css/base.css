@@ -492,3 +492,6 @@ h1, h3 {
     margin:40px 0; 
     font-weight:bold;
 }
+.message {
+    color: blue;
+}

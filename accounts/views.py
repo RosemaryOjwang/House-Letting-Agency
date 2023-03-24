@@ -7,7 +7,7 @@ from django.views import generic
 from django.contrib.auth.models import User
 from Houses.forms import House_DetailsForm
 from Houses.models import House_Details, House_Location
-
+from django.contrib import messages
 # Create your views here.
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
@@ -37,6 +37,8 @@ def add_house(request):
             house.slug = slug
             house.save()
 
+            messages.success(request, 'The house was added successfuly!')
+
             return redirect('user_admin')
     else:
         form = House_DetailsForm()
@@ -54,6 +56,8 @@ def edit_house(request, pk):
 
         if form.is_valid():
             form.save()
+
+            messages.success(request, 'The changes were submitted successfully!')
 
             return redirect('user_admin')
 
