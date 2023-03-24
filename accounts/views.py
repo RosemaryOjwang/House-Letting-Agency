@@ -42,4 +42,24 @@ def add_house(request):
         form = House_DetailsForm()
 
     return render(request, 'Agency/add_house.html',
-                  {'form': form})
+                  {'title': 'Add House',
+                  'form': form})
+
+@login_required
+def edit_house(request, pk):
+    house = House_Details.objects.filter(user=request.user).get(pk=pk)
+
+    if request.method == 'POST':
+        form = House_DetailsForm(request.POST, request.FILES, instance=house)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('user_admin')
+
+    else:
+        form = House_DetailsForm(instance=house)
+
+    return render(request, 'Agency/edit_house.html',
+                  {'title': 'Edit House',
+                  'form': form})

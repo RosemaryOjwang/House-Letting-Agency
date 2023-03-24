@@ -488,3 +488,7 @@ h1, h3 {
     margin-right: 600px;
     border: solid 2px blue;
 }
+.pagination { 
+    margin:40px 0; 
+    font-weight:bold;
+}

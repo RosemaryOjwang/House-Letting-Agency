@@ -23,15 +23,23 @@ class House_Location(models.Model):
         return reverse('Agency:house_list_by_locationName',
                        args=[self.slug])
     
+#class MultipleImage(models.Model):
+#    images = models.FileField(upload_to='img', null=True, blank=True, 
+#default='img/no_image.png')
+    
 class House_Details(models.Model):
     user = models.ForeignKey(User, 
                              related_name='houses',
                              on_delete=models.CASCADE)
     location = models.ForeignKey(House_Location,
                                  on_delete=models.CASCADE)
+    #multipleimages = models.ForeignKey(MultipleImage,
+    #                           related_name='multiple_images',
+    #                           on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=155, unique=True) 
     thumbnail = models.ImageField(upload_to='img')
+    
     description = models.TextField(max_length=1000)
     monthly_rent = models.DecimalField(max_digits=10,
                                        decimal_places=2)

@@ -3,7 +3,7 @@
 {% block title %}User Admin Site{% endblock %}
 
 {% block content %}
-    <h1>User Admin Site</h1>
+    <h3>User Admin Site</h3>
     {% if user.is_authenticated %}
          Hi {{ user.username }}!
         <br>    
@@ -20,7 +20,8 @@
     {% if request.user.houses.all %}
         {% for house in request.user.houses.all %}
                 <div class="my-houses">
-                    <a class="afrontpage" href="{{ house.get_absolute_url }}">
+                    <!--<a class="afrontpage" href="{{ house.get_absolute_url }}">-->
+                    <a class="afrontpage" href="{% url 'edit_house' house.id %}">
                         <img class="my-housesImg" src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
             static "img/no_image.png" %}{% endif %}">
                     </a>
