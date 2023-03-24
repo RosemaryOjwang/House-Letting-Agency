@@ -14,7 +14,7 @@
         <a class="alogin" href="{% url "login" %}"><span class="login-home">Log In</span></a>
     {% endif %}
 
-    <button class="posthousehere"><a href="{% url "add_house" %}">Add House</a></button><button class="edithousehere"><a href="#">Edit House</a></button>
+    <button class="posthousehere"><a href="{% url "add_house" %}">Add House</a></button>
     
     <h2>My Houses</h2>
     {% if request.user.houses.all %}
