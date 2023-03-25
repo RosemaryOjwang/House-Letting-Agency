@@ -10,6 +10,10 @@
 
         {{ form.as_p }}
 
-        <button class="addHouseButton">Submit</button>
+        {% if house %}
+        <button class="delete-btn"><a class="delete" href="{% url "delete_house" house.id %}">Delete House</a></button>
+    {% endif %}
+<button class="addHouseButton">Submit</button>
     </form>
+    
 {% endblock %}

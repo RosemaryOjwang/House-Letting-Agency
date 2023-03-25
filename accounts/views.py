@@ -21,7 +21,9 @@ def owner_detail(request, pk):
 
 @login_required
 def user_admin(request):
-    return render(request, 'userprofile/user_admin.html' )
+    houses = request.user.houses.exclude(available=False)
+    return render(request, 'userprofile/user_admin.html',
+                  {'houses': houses} )
 
 @login_required
 def add_house(request):
@@ -66,4 +68,15 @@ def edit_house(request, pk):
 
     return render(request, 'Agency/edit_house.html',
                   {'title': 'Edit House',
+                  'house': house,
                   'form': form})
+
+@login_required
+def delete_house(request, pk):
+    house = House_Details.objects.filter(user=request.user).get(pk=pk)
+    house.available = False
+    house.save()
+
+    messages.success(request, 'The house was deleted successfully!')
+
+    return redirect('user_admin')

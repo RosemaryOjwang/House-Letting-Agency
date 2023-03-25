@@ -23,8 +23,8 @@
         {% endfor %}
     {% endif %}
 
-    {% if request.user.houses.all %}
-        {% for house in request.user.houses.all %}
+    {% if houses %}
+        {% for house in houses %}
                 <div class="my-houses">
                     <!--<a class="afrontpage" href="{{ house.get_absolute_url }}">-->
                     <a class="afrontpage" href="{% url 'edit_house' house.id %}">
