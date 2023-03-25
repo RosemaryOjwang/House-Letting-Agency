@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, EmptyPage,\
 
 
 def frontpage(request):
-    houses = House_Details.objects.all()
+    houses = House_Details.objects.exclude(available=False)
 
     return render(request, 'Agency/frontpage.html',
                   {'houses': houses})

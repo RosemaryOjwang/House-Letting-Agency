@@ -23,9 +23,6 @@ class House_Location(models.Model):
         return reverse('Agency:house_list_by_locationName',
                        args=[self.slug])
     
-#class MultipleImage(models.Model):
-#    images = models.FileField(upload_to='img', null=True, blank=True, 
-#default='img/no_image.png')
     
 class House_Details(models.Model):
     user = models.ForeignKey(User, 
@@ -33,9 +30,6 @@ class House_Details(models.Model):
                              on_delete=models.CASCADE)
     location = models.ForeignKey(House_Location,
                                  on_delete=models.CASCADE)
-    #multipleimages = models.ForeignKey(MultipleImage,
-    #                           related_name='multiple_images',
-    #                           on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=155, unique=True) 
     thumbnail = models.ImageField(upload_to='img')
@@ -57,3 +51,11 @@ class House_Details(models.Model):
     
     def get_absolute_url(self):
         return reverse('Houses:house_detail', args=[self.id, self.slug])
+    
+class MultipleImage(models.Model):
+    house = models.ForeignKey(House_Details, on_delete=models.CASCADE)
+    images = models.ImageField(upload_to='img')
+
+    def __str__(self):
+        return self.house.title
+    

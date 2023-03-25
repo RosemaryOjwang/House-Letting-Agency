@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import House_Details, House_Location
+from .models import House_Details, House_Location, MultipleImage
 
 # Create your views here.
 def house_list(request, location_slug=None):
@@ -23,7 +23,9 @@ def house_detail(request, id, slug):
                               id=id,
                               slug=slug,
                               available=True)
+    images = MultipleImage.objects.filter(house=house)
     return render(request,
                   'houses/house_detail.html',
-                  {'house': house})
+                  {'house': house,
+                   'images': images})
 

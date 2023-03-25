@@ -7,9 +7,15 @@
 
 {% block content %}
     <div class="product-detail">
-        {% if house.thumbnail %}
-            <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
-        {% endif %}
+        <div>
+            {% if house.thumbnail %}
+                <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
+            {% endif %}
+            {% for image in images %}
+                <img src="{{ image.images.url }}" alt="images of the house">
+            {% endfor %}
+
+        </div>
         <h1>{{ house.title }}</h1>
         
         </h2>

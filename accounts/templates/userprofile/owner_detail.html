@@ -6,13 +6,13 @@
 
 {% block content %}
 
-    <h1>{% firstof house.user.get_full_name user.username %}</h1>
+    <h1><strong>Username:</strong>{% firstof house.user.get_full_name user.username %}</h1>
     
     <div>
 
         <h2>My Houses</h2>
     {% if user.houses.all %}
-        {% for house in user.houses.all %}
+        {% for house in houses %}
                 <div class="item">
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">
                         <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 

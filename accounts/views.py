@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.models import User
-from Houses.forms import House_DetailsForm
-from Houses.models import House_Details, House_Location
+from Houses.forms import House_DetailsForm, MultipleImagesForm
+from Houses.models import House_Details, MultipleImage
 from django.contrib import messages
 # Create your views here.
 class SignUpView(generic.CreateView):
@@ -15,9 +15,11 @@ class SignUpView(generic.CreateView):
     template_name = "registration/signup.html"
 def owner_detail(request, pk):
     user = User.objects.get(pk=pk)
+    houses = user.houses.exclude(available=False)
 
     return render(request, 'userprofile/owner_detail.html',
-                  {'user': user})
+                  {'user': user,
+                   'houses': houses})
 
 @login_required
 def user_admin(request):
@@ -27,27 +29,35 @@ def user_admin(request):
 
 @login_required
 def add_house(request):
+    house_form = House_DetailsForm()
+    images_form = MultipleImagesForm()
     if request.method == "POST":
-        form = House_DetailsForm(request.POST, request.FILES)
+        files = request.FILES.getlist('images')
+        house_form = House_DetailsForm(request.POST, request.FILES)
 
-        if form.is_valid():
+        if house_form.is_valid():
             title = request.POST.get('title')
             slug = slugify(title)
 
-            house = form.save(commit=False)
+            house = house_form.save(commit=False)
             house.user = request.user
             house.slug = slug
             house.save()
+
+            for file in files:
+                MultipleImage.objects.create(house=house, images=file)
 
             messages.success(request, 'The house was added successfuly!')
 
             return redirect('user_admin')
     else:
-        form = House_DetailsForm()
+        house_form = House_DetailsForm()
+        images_form = MultipleImagesForm()
 
-    return render(request, 'Agency/add_house.html',
-                  {'title': 'Add House',
-                  'form': form})
+
+
+    context = {"h_form": house_form, "i_form": images_form, "title": "Add House"}
+    return render(request, 'Agency/add_house.html', context )
 
 @login_required
 def edit_house(request, pk):
