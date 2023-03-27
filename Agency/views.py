@@ -23,20 +23,13 @@ def house_list(request, location_slug=None):
                                      slug=location_slug)
         houses = houses.filter(location=location)
     
-    paginator = Paginator(house_list, 2)
-    page_number = request.GET.get('page')
-    try:
-        houses = paginator.page(page_number)
-    except PageNotAnInteger:
-        #If page_number is not an integer deliver the first page
-        houses = paginator.page(1)
-    except EmptyPage:
-        #if page_number is out of range deliver last page of results
-        houses = paginator.page(paginator.num_pages)
-
+    paginator = Paginator(House_Location.objects.all(), 2)
+    page = request.GET.get('page')
+    location_pages = paginator.get_page(page)    
+    
     return render(request,
                   'Agency/frontpage.html',
-                  {'location': location,
+                  {'location_pages': location_pages,
                    'locations': locations,
                    'houses': houses}) 
 

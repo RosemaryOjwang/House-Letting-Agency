@@ -7,22 +7,26 @@
 
 {% block content %}
     <div class="product-detail">
-        <div>
-            {% if house.thumbnail %}
-                <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
-            {% endif %}
-            {% for image in images %}
-                <img src="{{ image.images.url }}" alt="images of the house">
-            {% endfor %}
-
+        <h2>{{ house.title }}</h2>
+        <div class="photos">
+            <div class="thumbnail">
+                {% if house.thumbnail %}
+                    <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
+                {% endif %}
+            </div>
+            <div class="multiple-images">
+                {% for image in images %}
+                    <img class="single-image" src="{{ image.images.url }}" alt="images of the house">
+                {% endfor %}
+            </div>
         </div>
-        <h1>{{ house.title }}</h1>
-        
-        </h2>
-        <p>Posted by: {{ house.user }}</p>
-        <p class="price">KSh{{ house.monthly_rent }}</p>
-        {{ house.description|linebreaks }}
-        <p>The house is {{ house.available }}ly available.</p>
-        <p>Please contact the owner at 0{{ house.owners_contact }}.</p>
+        <div class="details">
+                       
+            <p>Posted by: {{ house.user }}</p>
+            <p class="price">KSh{{ house.monthly_rent }}</p>
+            {{ house.description|linebreaks }}
+            <p>The house is {{ house.available }}ly available.</p>
+            <p>Please contact the owner at 0{{ house.owners_contact }}.</p>
+        </div>
     </div>
 {% endblock %}
