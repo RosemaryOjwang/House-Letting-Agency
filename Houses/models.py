@@ -20,7 +20,7 @@ class House_Location(models.Model):
         return self.locationName
     
     def get_absolute_url(self):
-        return reverse('Agency:house_list_by_locationName',
+        return reverse('Agency:house_list_by_Location',
                        args=[self.slug])
     
     
@@ -29,6 +29,7 @@ class House_Details(models.Model):
                              related_name='houses',
                              on_delete=models.CASCADE)
     location = models.ForeignKey(House_Location,
+                                 related_name='houses',
                                  on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=155, unique=True) 

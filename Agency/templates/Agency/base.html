@@ -9,22 +9,24 @@
     <link href="{% static "css/base.css" %}" rel="stylesheet">
 </head>
 <body>
+    <h1 class="co-name">Kamayuje House Letting Agency</h1>
     <nav>
             <a href="{% url "about" %}">About</a>
             <a href="{% url "user_admin" %}">Post a house</a>
-            <a href="/">Home</a>            
+            <a href="/">Home</a>  
+            <div class="search">
+                <form method="get" action="/search/">
+                    <input type="search" name="query" placeholder="Search...">
+                    <button class="search">Search</button>
+                </form>
+            </div>          
     </nav>
-    <h1 class="co-name">Kamayuje House Letting Agency</h1>
+   
 
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
     <br>
-    <!--<footer>
-        <h3>Kamayuje House Letting Agency</h3>
-        <br>
-        
-    </footer>-->
 </body>
 </html>

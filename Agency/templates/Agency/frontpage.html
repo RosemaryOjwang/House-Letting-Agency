@@ -7,22 +7,9 @@
 
     {% block content %}
         
-        <div id="sidebar">
-            <h3>Locations</h3>
-            <ul>
-                <li {% if not location %}class="selected"{% endif %}>
-                    <a href="{% url "Agency:house_list" %}">All</a>
-                </li>
-                {% for l in locations %}
-                    <li {% if location.slug == l.slug %}class="selected"
-                    {% endif %}>
-                        <a href="{{ l.get_absolute_url }}">{{ l.locationName }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+        
         <div id="main" class="product-list">
-            <h1>{% if location %}{{ location.locationName }}{% else %}Houses
+            <h1>{% if Location %}{{ Location.locationName }}{% else %}Houses
             {% endif %}</h1>
             {% for house in houses %}
                 <div class="item">
@@ -36,5 +23,4 @@
                 </div>
             {% endfor %}    
         </div>
-        {{ location_pages }}
     {% endblock %}

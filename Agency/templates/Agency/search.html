@@ -1,21 +1,18 @@
-{% extends 'Agency/base.html' %}
+{% extends "Agency/base.html" %} 
+{% load static %} 
 
-{% block title %}
-    {% firstof house.user.get_full_name user.username %}
-{% endblock %}
+{% block title %} 
+Search
+{% endblock %}  
 
 {% block content %}
+    <h1>Search</h1>
+    <h2>Search results for "{{ query }}"</h2>
 
-    <h1><strong>Username:</strong>{% firstof house.user.get_full_name user.username %}</h1>
-    
-    <div>
-
-        <h2>My Houses</h2>
-    {% if user.houses.all %}
+    <div class="product-list">
         {% for house in houses %}
-            <div class="product-list">
                 <div class="item">
-                    <a  href="{{ house.get_absolute_url }}">
+                    <a class="afrontpage" href="{{ house.get_absolute_url }}">
                         <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
             static "img/no_image.png" %}{% endif %}">
                     </a>
@@ -23,11 +20,8 @@
                     <br>
                     KSh{{ house.monthly_rent }}
                 </div>
-            </div>    
         {% endfor %}
-    {% else %}
-        <p>You've not added any houses...</p>
-    {% endif %}
 
     </div>
+
 {% endblock %}

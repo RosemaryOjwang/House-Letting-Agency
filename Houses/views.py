@@ -1,10 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import House_Details, House_Location, MultipleImage
-from django.core.paginator import Paginator, EmptyPage,\
-                                  PageNotAnInteger
 
-
-# Create your views here.
 def house_list(request, location_slug=None):
     location = None
     locations = House_Location.objects.all()
@@ -13,25 +9,13 @@ def house_list(request, location_slug=None):
         location = get_object_or_404(House_Location,
                                      slug=location_slug)
         houses = houses.filter(location=location)
-    paginator = Paginator(House_Location.objects.all(), 2)
-    page = request.GET.get('page')
-    location_pages = paginator.get_page(page)
-
-
+    
+      
     return render(request,
                   'Agency/frontpage.html',
                   {'location': location,
                    'locations': locations,
-                   'houses': houses,
-                   'location_pages': location_pages}) 
-    
-    #return render(request,
-    #              'Agency/frontpage.html',
-    #              {'location': location,
-    #               'locations': locations,
-    #               'houses': houses}) 
-
-
+                   'houses': houses}) 
 
 def house_detail(request, id, slug):
     house = get_object_or_404(House_Details,
@@ -44,3 +28,10 @@ def house_detail(request, id, slug):
                   {'house': house,
                    'images': images})
 
+def search(request):
+    query =  request.GET.get('query', '')
+    houses = House_Details.objects.filter(title__icontains=query)
+
+    return render(request, 'Agency/search.html',
+                  {'query': query,
+                   'houses': houses,})
