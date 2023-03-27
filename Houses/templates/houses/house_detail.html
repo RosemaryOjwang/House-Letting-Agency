@@ -23,10 +23,9 @@
         <div class="details">
                        
             <p>Posted by: {{ house.user }}</p>
-            <p class="price">KSh{{ house.monthly_rent }}</p>
+            <p class="price">KSh{{ house.monthly_rent }}/Month</p>
             {{ house.description|linebreaks }}
-            <p>The house is {{ house.available }}ly available.</p>
-            <p>Please contact the owner at 0{{ house.owners_contact }}.</p>
+            <p>Please contact the owner at 0{{ house.owners_contact }} for viewing.</p>
         </div>
     </div>
 {% endblock %}
