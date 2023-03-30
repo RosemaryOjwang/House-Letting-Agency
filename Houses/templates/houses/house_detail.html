@@ -22,10 +22,10 @@
         </div>
         <div class="details">
                        
-            <p>Posted by: {{ house.user }}</p>
-            <p class="price">KSh{{ house.monthly_rent }}/Month</p>
+            <p>Posted by:<strong> {{ house.user }}</strong></p>
+            <p class="price">KSh<strong>{{ house.monthly_rent }}</strong>/Month</p>
             {{ house.description|linebreaks }}
-            <p>Please contact the owner at 0{{ house.owners_contact }} for viewing.</p>
+            <p>Please contact the owner at <strong>0{{ house.owners_contact }}</strong> for viewing.</p>
         </div>
     </div>
 {% endblock %}
