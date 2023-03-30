@@ -8,6 +8,7 @@
         <h3>{{ title }}</h3>
         {% csrf_token %}
 
+        {{ l_form.as_p }}
         {{ h_form.as_p }}
         {{ i_form.as_p }}
 
