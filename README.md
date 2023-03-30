@@ -1,4 +1,8 @@
 # Kamayuje House Letting Agency
+
+![Home_Page](media/img/App_Screenshot.png)
+
+
 _**By Rosemary Ojwang**_
 
 *An application that connects landlords with tenants.*
