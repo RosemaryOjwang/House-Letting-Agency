@@ -1,5 +1,5 @@
 # Kamayuje House Letting Agency
-_*By Rosemary Ojwang*_
+_**By Rosemary Ojwang**_
 
 *An application that connects landlords with tenants.*
 
@@ -18,4 +18,5 @@ _*By Rosemary Ojwang*_
 ## License
 [MIT](https://opensource.org/license/mit/)
 
-*Copyright (c) 2023. _Rosemary Ojwang_* 
+_Copyright (c) 2023._ _**Rosemary Ojwang**_
+
