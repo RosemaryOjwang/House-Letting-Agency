@@ -14,7 +14,7 @@ _**By Rosemary Ojwang**_
 
 *Potential tenants can view the details of the houses, and contact the landlords for physical house viewing, and maybe proceed to rent the houses.*  
 
-## Setup/Installation Requirements
+## Set Up/Installation Requirements
 1. `git clone https://github.com/RosemaryOjwang/House-Letting-Agency` to your desktop.
 2. Navigate to the directory 'House-Letting-Agency' using the command `cd House-Letting-Agency`
 3. Create a virtual environment using the command `python -m venv env`

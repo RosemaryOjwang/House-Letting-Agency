@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Agency',
     'accounts',
-    'Houses', 
+    'Houses',
+    'payments', 
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,8 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_REDIRECT_URL = "user_admin"
 LOGOUT_REDIRECT_URL = "frontpage"
+
+#Stripe settings
+STRIPE_PUBLISHABLE_KEY = env('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
+STRIPE_API_VERSION = env('STRIPE_API_VERSION')
