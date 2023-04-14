@@ -25,6 +25,7 @@ _**By Rosemary Ojwang**_
     1. `python manage.py makemigrations`
     2. `python manage.py migrate`
 6. Run server using the command `python manage.py runserver`
+7. Open http://127.0.0.1:8000/ on your browser.
 ![Home_Page](media/img/App_Screenshot.png)
 
 
