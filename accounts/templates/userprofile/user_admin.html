@@ -5,8 +5,8 @@
 {% block content %}
     <h3>User Admin Site</h3>
     {% if user.is_authenticated %}
-         Hi {{ user.username }}!
-        <br>    
+        <p>Welcome {{ user.username }}</p>
+        <p>Please click <a href="{% url "payments:process" %}">here</a> to pay.</p>  
 
         <button class="logout"><a href="{% url "logout" %}">Log Out</a></button>
     {% else %}

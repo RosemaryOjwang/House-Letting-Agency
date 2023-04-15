@@ -1,7 +1,7 @@
 from django.utils.text import slugify
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.models import User
@@ -49,7 +49,9 @@ def add_house(request):
 
             messages.success(request, 'The house was added successfuly!')
 
-            return redirect('user_admin')
+            return redirect(reverse('payments:process'))
+
+            #return redirect('user_admin')
     else:
         house_form = House_DetailsForm()
         images_form = MultipleImagesForm()
@@ -62,9 +64,11 @@ def add_house(request):
 @login_required
 def edit_house(request, pk):
     house = House_Details.objects.filter(user=request.user).get(pk=pk)
-
+    
     if request.method == 'POST':
         form = House_DetailsForm(request.POST, request.FILES, instance=house)
+        
+
 
         if form.is_valid():
             form.save()
@@ -75,11 +79,12 @@ def edit_house(request, pk):
 
     else:
         form = House_DetailsForm(instance=house)
+        
 
-    return render(request, 'Agency/edit_house.html',
-                  {'title': 'Edit House',
-                  'house': house,
-                  'form': form})
+    context = {"form": form, "title": "Edit House"}
+
+    return render(request, 'Agency/edit_house.html', context)
+    
 
 @login_required
 def delete_house(request, pk):

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 
 # Create your models here.
 class User_Profile(models.Model):
@@ -8,3 +8,4 @@ class User_Profile(models.Model):
                                 on_delete=models.CASCADE)
     def __str__(self):
         return self.user.username
+    
