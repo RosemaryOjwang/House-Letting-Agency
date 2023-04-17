@@ -32,21 +32,13 @@ def payment_process(request, id=None):
                 }
             ],
             mode = 'payment',
-            success_url = request.build_absolute_uri(reverse('payments:completed')) + "?session_id={CHECKOUT_SESSION_ID}",
+            success_url = request.build_absolute_uri(reverse('payments:completed')),
             cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
         return redirect(checkout_session.url, code=303)
     return render(request, 'payment/process.html')
 def payment_completed(request):
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    checkout_session_id = request.GET.get('session_id', None)
-    session = stripe.checkout.Session.retrieve(checkout_session_id)
-    customer = stripe.Customer.retrieve(session.customer)
-    user_id = request.user
-    user_payment = Pay.objects.get(user=user_id)
-    user_payment.stripe_checkout_id = checkout_session_id
-    user_payment.save()
-    return render(request, 'payment/completed.html', {'customer': customer})
+    return render(request, 'payment/completed.html')
 
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
