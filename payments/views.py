@@ -6,26 +6,34 @@ from .models import Pay
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from .models import Pay
+from Houses.models import House_Details
+from accounts.models import User_Profile
 
 
 # Create your views here.
 @login_required
-def payment_process(request):
+def payment_process(request, id=None):
+    user_id = request.user
     stripe.api_key = settings.STRIPE_SECRET_KEY
     if request.method == 'POST':
         checkout_session = stripe.checkout.Session.create(
             payment_method_types = ['card'],
             line_items = [
                 {
-                    'price': settings.PRODUCT_PRICE,
+                    'price_data': {
+                        'currency': 'usd',
+                        'product_data': {
+                            'name': House_Details.id,
+                        },
+                        'unit_amount': 300,
+                    },
                     'quantity': 1,
-                },
+                }
             ],
             mode = 'payment',
-            customer_creation = 'always',
-            success_urls = settings.REDIRECT_DOMAIN + '/payment_completed?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url = settings.REDIRECT_DOMAIN + '/payment_canceled',
-
+            success_url = request.build_absolute_uri(reverse('payments:completed')) + "?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
         return redirect(checkout_session.url, code=303)
     return render(request, 'payment/process.html')
@@ -34,7 +42,7 @@ def payment_completed(request):
     checkout_session_id = request.GET.get('session_id', None)
     session = stripe.checkout.Session.retrieve(checkout_session_id)
     customer = stripe.Customer.retrieve(session.customer)
-    user_id = request.user.user_id
+    user_id = request.user
     user_payment = Pay.objects.get(user=user_id)
     user_payment.stripe_checkout_id = checkout_session_id
     user_payment.save()

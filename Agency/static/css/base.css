@@ -293,3 +293,8 @@ h1, h3 {
 .contacts {
     text-align: left;
 }
+.pay_now {
+    background-color: blue;
+    border: none;
+    color: #FFFFFF;
+}
