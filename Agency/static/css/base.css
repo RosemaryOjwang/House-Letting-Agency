@@ -274,6 +274,11 @@ h1, h3 {
     background: red;
 
 }
+.edit_form {
+    margin-top: 30px;
+    height: fit-content;
+    width:fit-content;
+}
 .search {
     border: none;
 }
@@ -296,5 +301,11 @@ h1, h3 {
 .pay_now {
     background-color: blue;
     border: none;
+    color: #FFFFFF;
+}
+.paylink {
+    width: fit-content;
+}
+.password-reset > {
     color: #FFFFFF;
 }

@@ -1,5 +1,5 @@
 from datetime import time
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 import stripe
 from .models import Pay
@@ -35,9 +35,19 @@ def payment_process(request, id=None):
             success_url = request.build_absolute_uri(reverse('payments:completed')),
             cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
+        
         return redirect(checkout_session.url, code=303)
-    return render(request, 'payment/process.html')
+    return render(request, 'Agency/add_house.html')
+
 def payment_completed(request):
+    #session_id = request.GET.get('session_id')
+    #if session_id is None:
+    #    return HttpResponseNotFound()
+    
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+
+    Pay.payment_bool = True
+    
     return render(request, 'payment/completed.html')
 
 def payment_canceled(request):

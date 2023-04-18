@@ -81,7 +81,7 @@ def edit_house(request, pk):
         form = House_DetailsForm(instance=house)
         
 
-    context = {"form": form, "title": "Edit House"}
+    context = {"form": form, "house": house, "title": "Edit House"}
 
     return render(request, 'Agency/edit_house.html', context)
     

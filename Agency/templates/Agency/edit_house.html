@@ -1,7 +1,5 @@
 {% extends "Agency/base.html" %}
-
 {% block title %}{{ title }}{% endblock %}
-
 {% block content %}
     
     <form method="post" actions="." enctype="multipart/form-data">
@@ -11,9 +9,9 @@
         {{ form.as_p }}
 
         {% if house %}
-        <button class="delete-btn"><a class="delete" href="{% url "delete_house" house.id %}">Delete House</a></button>
-    {% endif %}
-<button class="addHouseButton">Submit</button>
+            <button class="delete-btn"><a class="delete" href="{% url "delete_house" house.id %}">Delete House</a></button>
+        {% endif %}
+        <button class="addHouseButton">Submit</button>
     </form>
     
 {% endblock %}

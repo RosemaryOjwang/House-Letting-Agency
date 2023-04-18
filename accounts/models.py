@@ -7,6 +7,7 @@ class User_Profile(models.Model):
                                 related_name='userprofile',
                                 on_delete=models.CASCADE)
     user_amount = models.IntegerField(default=300)
+    verbose_name = 'userprofile'
     def __str__(self):
         return self.user.username
     

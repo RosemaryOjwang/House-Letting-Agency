@@ -11,6 +11,7 @@
 
     <button class="signup1" type="submit">Sign Up</button><br>
     <p class="line"><span>or</span></p>
+    <p><a class="password-reset" href="{% url "password_reset" %}">Reset Password</a> </p>
     <button class="return-btn"><a href="{% url "login" %}">Return to login</a></button>
 </form>
 {% endblock %}
