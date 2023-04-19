@@ -49,7 +49,7 @@ def add_house(request):
 
             messages.success(request, 'The house was added successfuly!')
 
-            return redirect(reverse('payments:process'))
+            return redirect('payments:process')
 
             #return redirect('user_admin')
     else:

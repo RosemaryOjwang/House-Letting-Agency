@@ -13,7 +13,7 @@ from accounts.models import User_Profile
 
 # Create your views here.
 @login_required
-def payment_process(request, id=None):
+def payment_process(request, id=id):
     user_id = request.user
     stripe.api_key = settings.STRIPE_SECRET_KEY
     if request.method == 'POST':
@@ -32,12 +32,12 @@ def payment_process(request, id=None):
                 }
             ],
             mode = 'payment',
-            success_url = request.build_absolute_uri(reverse('payments:completed')),
+            success_url = request.build_absolute_uri(reverse('payments:completed')) + 'session_id={CHECKOUT_SESSION_ID}',
             cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
         
         return redirect(checkout_session.url, code=303)
-    return render(request, 'Agency/add_house.html')
+    return render(request, 'payment/process.html')
 
 def payment_completed(request):
     #session_id = request.GET.get('session_id')
@@ -45,15 +45,21 @@ def payment_completed(request):
     #    return HttpResponseNotFound()
     
     stripe.api_key = settings.STRIPE_SECRET_KEY
-
+    checkout_session_id = request.GET.get('session_id')
+    session = stripe.checkout.Session.retrieve(checkout_session_id)
+    customer = stripe.Customer.retrieve(session.customer)
+    user_id = request.User.user_id
+    user_payment = Pay.objects.get(user=user_id)
+    user_payment.stripe_checkout_id = checkout_session_id
+    user_payment.save()
     Pay.payment_bool = True
     
-    return render(request, 'payment/completed.html')
+    return render(request, 'payment/completed.html', {'customer': customer})
 
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
 @csrf_exempt
-def stripe_webhook(request):
+def stripe_webhook(request, id):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     time.sleep(10)
     payload = request.body
@@ -69,7 +75,7 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        session_id = session.get('id', None)
+        session_id = session.get(id=id)
         time.sleep(15)
         user_payment = Pay.objects.get(stripe_checkout_id=session_id)
         line_items = stripe.checkout.session.list_line_items(session_id, limit=1)
