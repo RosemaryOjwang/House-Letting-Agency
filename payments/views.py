@@ -32,13 +32,13 @@ def payment_process(request, id=id):
                 }
             ],
             mode = 'payment',
-            success_url = request.build_absolute_uri(reverse('payments:completed')) + 'session_id={CHECKOUT_SESSION_ID}',
+            success_url = request.build_absolute_uri(reverse('add_house')),
             cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
         
         return redirect(checkout_session.url, code=303)
     return render(request, 'payment/process.html')
-
+"""
 def payment_completed(request):
     #session_id = request.GET.get('session_id')
     #if session_id is None:
@@ -55,9 +55,10 @@ def payment_completed(request):
     Pay.payment_bool = True
     
     return render(request, 'payment/completed.html', {'customer': customer})
-
+"""
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
+"""
 @csrf_exempt
 def stripe_webhook(request, id):
     stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -82,3 +83,4 @@ def stripe_webhook(request, id):
         user_payment.payment_bool = True
         user_payment.save()
     return HttpResponse(status=200)
+"""

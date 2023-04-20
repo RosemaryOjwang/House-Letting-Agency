@@ -59,9 +59,9 @@ def add_house(request):
 
             messages.success(request, 'The house was added successfuly!')
 
-            return redirect('payments:process')
+            #return redirect('payments:process')
 
-            #return redirect('user_admin')
+            return redirect('user_admin')
     else:
         house_form = House_DetailsForm()
         images_form = MultipleImagesForm()
