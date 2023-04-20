@@ -16,10 +16,11 @@ from django.contrib.auth.models import User
 from Houses.forms import House_DetailsForm, MultipleImagesForm
 from Houses.models import House_Details, MultipleImage
 from django.contrib import messages
+from .forms import SignUpForm
 
 # Create your views here.
 class SignUpView(generic.CreateView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
     success_url = reverse_lazy("login")
     template_name = "registration/signup.html"
 def owner_detail(request, pk):
