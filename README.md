@@ -16,16 +16,29 @@ _**By Rosemary Ojwang**_
 
 ## Set Up/Installation Requirements
 1. `git clone https://github.com/RosemaryOjwang/House-Letting-Agency` to your desktop.
+
 2. Navigate to the directory 'House-Letting-Agency' using the command `cd House-Letting-Agency`
+
 3. Create a virtual environment using the command `python -m venv env`
+
 4. Activate the virtual environment using;
     * for windows use `env\Scripts\activate`
     * for Linux and MacOS use `source env/bin/activate`
-5. Make migrations using the following commands;
+
+5. Run requirements file to install libraries using the following;
+`pip install -r requirements.txt`
+
+6. Make migrations using the following commands;
     1. `python manage.py makemigrations`
     2. `python manage.py migrate`
-6. Run server using the command `python manage.py runserver`
-7. Open http://127.0.0.1:8000/ on your browser.
+
+7. Create a superuser using the following command:
+`python manage.py createsuperuser`
+
+8. Run the server using the command `python manage.py runserver`
+
+9. Open http://localhost:8000/ on your browser.
+
 ![Home_Page](media/img/App_Screenshot.png)
 
 
