@@ -10,4 +10,5 @@
         <div><input class="pay_now" type="submit" value="Pay Now"></div>
         {% csrf_token %}
     </form>
+    <p>Please click <a href="{% url "user_admin" %}">here</a> to go back.</p>
 {% endblock %}
