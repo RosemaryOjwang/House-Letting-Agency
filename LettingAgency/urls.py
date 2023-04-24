@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from Agency.views import frontpage, about
 from accounts import views
-from django.contrib.auth import views as auth_views
+#from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
