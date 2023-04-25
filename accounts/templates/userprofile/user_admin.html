@@ -19,7 +19,9 @@
     <h2>My Houses</h2>
     {% if messages %}
         {% for message in messages %}
-            <h4 class="message">{{ message }}</h4>
+            <div class="message-container">
+                <h4 class="message">{{ message }}</h4>
+            </div>
         {% endfor %}
     {% endif %}
 

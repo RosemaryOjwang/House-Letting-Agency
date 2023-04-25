@@ -261,7 +261,17 @@ h1, h3 {
     border: solid 2px blue;
 }
 .message {
-    color: blue;
+    color: #FFFFFF;
+    font-size: 1.4em;
+    text-align: center;
+    grid-row: 2/3;
+}
+.message-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 100vw;
+    height: 10vh;
+    background-color: blue;
 }
 .delete {
     background-color: red;
