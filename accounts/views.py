@@ -18,10 +18,13 @@ class SignUpView(generic.CreateView):
 def owner_detail(request, pk):
     user = User.objects.get(pk=pk)
     houses = user.houses.exclude(available=False)
+    paginator = Paginator(houses, 5)
+    page_number = request.GET.get('page', 1)
+    my_listing = paginator.get_page(page_number)
 
     return render(request, 'userprofile/owner_detail.html',
                   {'user': user,
-                   'houses': houses})
+                   'my_listing': my_listing})
 
 @login_required
 def user_admin(request):

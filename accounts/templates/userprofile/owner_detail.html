@@ -10,9 +10,13 @@
     
     <div>
 
-        <h2>My Houses</h2>
+        <h1>My Houses</h1>
+        <h2>
+            {% include "userprofile/pagination.html" with page=my_listing %}
+        </h2>
+    
     {% if user.houses.all %}
-        {% for house in houses %}
+        {% for house in my_listing %}
             <div class="product-list">
                 <div class="item">
                     <a  href="{{ house.get_absolute_url }}">
