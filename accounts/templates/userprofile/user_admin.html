@@ -4,7 +4,9 @@
 
 {% block content %}
     <h3>User Admin Site</h3>
+    
     {% if user.is_authenticated %}
+        
         <p>Welcome {{ user.username }} <button class="logout"><a href="{% url "logout" %}">Log Out</a></button></p>
         <p>Kindly click <a href="{% url "payments:process" %}">here</a> to pay so that you can add a house to this website.</p>
         
@@ -17,6 +19,9 @@
     
     
     <h2>My Houses</h2>
+    <h2>
+        {% include "userprofile/pagination.html" with page=my_listing %}
+    </h2>
     {% if messages %}
         {% for message in messages %}
             <div class="message-container">
@@ -24,9 +29,9 @@
             </div>
         {% endfor %}
     {% endif %}
-
-    {% if houses %}
-        {% for house in houses %}
+               
+    {% if my_listing %}
+        {% for house in my_listing %}
                 <div class="my-houses">
                     
                     <a class="afrontpage" href="{% url 'edit_house' house.id %}">

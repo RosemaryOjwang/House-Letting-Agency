@@ -1,14 +1,5 @@
-#from django.http import HttpResponse
-#from django.core.mail import send_mail, BadHeaderError
-#from django.contrib.auth.forms import PasswordResetForm
-#from django.template.loader import render_to_string
-#from django.utils.encoding import force_bytes
-#from django.contrib.auth.tokens import default_token_generator
-#from django.utils.http import urlsafe_base64_encode
-#from django.db.models.query_utils import Q
 from django.utils.text import slugify
 from django.shortcuts import render, redirect
-#from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views import generic
@@ -17,6 +8,7 @@ from Houses.forms import House_DetailsForm, MultipleImagesForm
 from Houses.models import House_Details, MultipleImage
 from django.contrib import messages
 from .forms import SignUpForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 class SignUpView(generic.CreateView):
@@ -34,8 +26,12 @@ def owner_detail(request, pk):
 @login_required
 def user_admin(request):
     houses = request.user.houses.exclude(available=False)
+    paginator = Paginator(houses, 5)
+    page_number = request.GET.get('page', 1)
+    my_listing = paginator.get_page(page_number)
+
     return render(request, 'userprofile/user_admin.html',
-                  {'houses': houses} )
+                  {'my_listing': my_listing})
 
 @login_required
 def add_house(request):

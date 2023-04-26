@@ -1,9 +1,7 @@
 from django.urls import path
 from . import views
-from .views import SignUpView #MyLoginView, RegisterView
-from django.contrib.auth import views as auth_views
+from .views import SignUpView
 from django.contrib.auth.views import (
-    LogoutView,
     PasswordResetView,
     PasswordResetDoneView,
     PasswordResetConfirmView,
@@ -14,9 +12,6 @@ from django.contrib.auth.views import (
 urlpatterns = [
     path('signup/', SignUpView.as_view(), name="signup"),
     path('accounts/login/', SignUpView.as_view(), name='login'),
-    #path('login/', MyLoginView.as_view(redirect_authenticated_user=True), name='login'),
-    #path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
-    #path('register/', RegisterView.as_view(), name='register'),
     path('password-reset/', PasswordResetView.as_view(template_name='users/password_reset.html',
                                                       html_email_template_name='users/password_reset_email.html'), 
                                                       name='password-reset'),

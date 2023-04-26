@@ -2,13 +2,10 @@ from datetime import time
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 import stripe
-from .models import Pay
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from .models import Pay
 from Houses.models import House_Details
-from accounts.models import User_Profile
 
 
 # Create your views here.
