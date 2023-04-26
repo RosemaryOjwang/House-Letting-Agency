@@ -32,7 +32,7 @@ class House_Details(models.Model):
                                  related_name='houses',
                                  on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=155, unique=True) 
+    slug = models.SlugField(max_length=155) 
     thumbnail = models.ImageField(upload_to='img')
     
     description = models.TextField(max_length=1000)
