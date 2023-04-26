@@ -1,15 +1,15 @@
-from django.http import HttpResponse
-from django.core.mail import send_mail, BadHeaderError
-from django.contrib.auth.forms import PasswordResetForm
-from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes
-from django.contrib.auth.tokens import default_token_generator
-from django.utils.http import urlsafe_base64_encode
-from django.db.models.query_utils import Q
+#from django.http import HttpResponse
+#from django.core.mail import send_mail, BadHeaderError
+#from django.contrib.auth.forms import PasswordResetForm
+#from django.template.loader import render_to_string
+#from django.utils.encoding import force_bytes
+#from django.contrib.auth.tokens import default_token_generator
+#from django.utils.http import urlsafe_base64_encode
+#from django.db.models.query_utils import Q
 from django.utils.text import slugify
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.urls import reverse_lazy, reverse
+#from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.contrib.auth.models import User
