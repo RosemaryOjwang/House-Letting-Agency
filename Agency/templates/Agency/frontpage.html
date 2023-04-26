@@ -2,16 +2,18 @@
 {% load static %}
 
     {% block title %}
-        {% if location %}{{location.locationName}}{% else %}Houses{% endif %}
+        Houses
     {% endblock %}
 
     {% block content %}
-        
+
         
         <div id="main" class="product-list">
-            <h1>{% if Location %}{{ Location.locationName }}{% else %}Houses To Let
-            {% endif %}</h1>
-            {% for house in houses %}
+            <h1>Houses To Let</h1>
+            <h2>
+                {% include "Agency/pagination.html" with page=listing %}
+            </h2>
+            {% for house in listing %}
                 <div class="item">
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">
                         <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
@@ -21,6 +23,7 @@
                     <br>
                     KSh{{ house.monthly_rent }}/Month
                 </div>
-            {% endfor %}    
+            {% endfor %}
+                
         </div>
     {% endblock %}
