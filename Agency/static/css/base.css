@@ -55,7 +55,6 @@ form p input {
     border-radius:4px;
 }
 
-
 #content {
     padding:0 100px;
     overflow:hidden;
@@ -134,7 +133,7 @@ form p input {
 
 .line   {
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
     width: 22%;
     text-align: center;
     border-bottom: 1px solid #000;
@@ -159,8 +158,6 @@ form p input {
     color: #ffffff;
 }
 .return-btn{
-    margin-top: 1.5%;
-    margin-bottom: 1.5%;
     border: none;
 }
 .return-btn > a {

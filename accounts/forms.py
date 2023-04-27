@@ -10,7 +10,3 @@ class SignUpForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
-
-        #self.fields['username'].widget.attrs['class':'usernameField']
-        #self.fields['password1'].widget.attrs['class':'password1Field']
-        #self.fields['password2'].widget.attrs['class':'password2Field']

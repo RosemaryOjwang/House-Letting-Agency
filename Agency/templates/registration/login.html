@@ -10,9 +10,12 @@
     {{ form.as_p }}
 
     <button class="login" type="submit">Login</button>
+    <br><br>
+    <a href="{% url "password-reset" %}">Forgot password?</a>
+
     <p class="line"><span>or</span></p>
     <button id="signup"><a href="{% url "signup" %}">Sign Up</a></button>
-    <a href="{% url "password-reset" %}">Forgot password?</a>
+    
     
 </form>
 
