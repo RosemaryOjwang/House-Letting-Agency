@@ -54,6 +54,15 @@ form p input {
     color:#666;
     border-radius:4px;
 }
+form  span {
+    margin-top: 2%;
+    color: blue;
+}
+ul  {
+    
+    margin-top: 6.5%;
+    color: blue;
+}
 
 #content {
     padding:0 100px;
@@ -316,3 +325,8 @@ h1, h3 {
 .password-reset > {
     color: #FFFFFF;
 }
+
+/*.emailField {
+    margin-left: 50%;
+    margin-top: -5%;
+}*/
