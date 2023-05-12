@@ -298,6 +298,11 @@ h1, h3 {
 .search {
     border: none;
 }
+.search-input   {
+    height: 30px;
+    margin-top: 20px;
+    font-size: 20px;
+}
 .footer {
     color: blue;
     font-style: italic;
@@ -326,7 +331,19 @@ h1, h3 {
     color: #FFFFFF;
 }
 
-/*.emailField {
-    margin-left: 50%;
-    margin-top: -5%;
-}*/
+@media only screen and (max-width: 480px)    {
+    /*for mobile phones*/
+
+}
+@media only screen and (max-width: 768px)   {
+    /*for ipads and tablets*/
+}
+@media only screen and (max-width: 1024px)  {
+    /*for smaall screens and laptops*/
+}
+@media only screen and (max-width: 1200px)  {
+    /*for Desktops, large screens*/
+}
+@media only screen and (min-width: 1201px)  {
+    /*for extra large screens*/
+}
