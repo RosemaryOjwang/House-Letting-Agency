@@ -23,36 +23,22 @@ def payment_process(request, id=id):
                         'product_data': {
                             'name': House_Details.id,
                         },
-                        'unit_amount': 300,
+                        'unit_amount': 50,
                     },
                     'quantity': 1,
                 }
             ],
             mode = 'payment',
-            success_url = request.build_absolute_uri(reverse('add_house')),
+            success_url = request.build_absolute_uri(reverse('payments:completed')),
             cancel_url = request.build_absolute_uri(reverse('payments:canceled')),
         )
         
         return redirect(checkout_session.url, code=303)
     return render(request, 'payment/process.html')
-"""
+
 def payment_completed(request):
-    #session_id = request.GET.get('session_id')
-    #if session_id is None:
-    #    return HttpResponseNotFound()
-    
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    checkout_session_id = request.GET.get('session_id')
-    session = stripe.checkout.Session.retrieve(checkout_session_id)
-    customer = stripe.Customer.retrieve(session.customer)
-    user_id = request.User.user_id
-    user_payment = Pay.objects.get(user=user_id)
-    user_payment.stripe_checkout_id = checkout_session_id
-    user_payment.save()
-    Pay.payment_bool = True
-    
-    return render(request, 'payment/completed.html', {'customer': customer})
-"""
+    return render(request, 'payment/completed.html')
+
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
 """

@@ -5,7 +5,7 @@
 
 {% block content %}
     <h1>Payment Details</h1>
-    <p>You are required to make a payment of <strong>USD 3</strong> for house posting.</p>
+    <p>You are required to make a payment of <strong>USD 0.5</strong> for house posting.</p>
     <form class="paylink" action="{% url "payments:process" %}" method="post">
         <div><input class="pay_now" type="submit" value="Pay Now"></div>
         {% csrf_token %}
