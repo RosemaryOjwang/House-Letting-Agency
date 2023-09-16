@@ -23,7 +23,7 @@ def payment_process(request, id=id):
                         'product_data': {
                             'name': House_Details.id,
                         },
-                        'unit_amount': 50,
+                        'unit_amount': 5000,
                     },
                     'quantity': 1,
                 }
