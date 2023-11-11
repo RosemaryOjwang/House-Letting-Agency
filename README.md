@@ -23,7 +23,7 @@ _**By Rosemary Ojwang**_
 
 4. Activate the virtual environment using;
     * for windows use `env\Scripts\activate`
-    * for Linux and MacOS use `source env/bin/activate`
+    * for Linux and MacOS use `source env/bin/activate`. The same applies for Gitbash.
 
 5. Run requirements file to install libraries using the following;
 `pip install -r requirements.txt`
@@ -40,7 +40,6 @@ _**By Rosemary Ojwang**_
 9. Open http://localhost:8000/ on your browser.
 
 ![Home_Page](media/img/App_Screenshot.png)
-
 
 ## License
 [MIT](https://opensource.org/license/mit/)
