@@ -42,9 +42,6 @@ _**By Rosemary Ojwang**_
 ![Home_Page](media/img/App_Screenshot.png)
 
 
-## Known Bugs
-*The multiple images of the different sections of the houses blink on hover.*
-
 ## License
 [MIT](https://opensource.org/license/mit/)
 
