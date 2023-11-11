@@ -7,7 +7,9 @@
 
 {% block content %}
     <div class="product-detail">
+        <a href="{% url "frontpage" %}">&lt;&lt;BACK</a>
         <h2>{{ house.title }}</h2>
+        
         <div class="photos">
             <div class="thumbnail">
                 {% if house.thumbnail %}
@@ -16,7 +18,7 @@
             </div>
             <div class="multiple-images">
                 {% for image in images %}
-                    <img class="single-image" src="{{ image.images.url }}" alt="images of the house">
+                    <img src="{{ image.images.url }}" alt="images of the house">
                 {% endfor %}
             </div>
         </div>
@@ -26,6 +28,8 @@
             <p class="price">KSh<strong>{{ house.monthly_rent }}</strong>/Month</p>
             {{ house.description|linebreaks }}
             <p>Please contact the owner at <strong>0{{ house.owners_contact }}</strong> for viewing.</p>
+            
         </div>
+        
     </div>
 {% endblock %}
