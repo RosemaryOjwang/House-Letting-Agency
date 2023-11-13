@@ -12,9 +12,9 @@
         
         <div class="photos">
             <div class="thumbnail">
-                {% if house.thumbnail %}
-                    <img src="{{ house.thumbnail.url }}"> {% else %}{% static "img/no_image.png" %}
-                {% endif %}
+                <img src="{% if house.thumbnail %}{{house.thumbnail.url}}{% else %}
+                {% static "img/no_image.png" %}{% endif %}">
+                    
             </div>
             <div class="multiple-images">
                 {% for image in images %}

@@ -33,7 +33,7 @@ class House_Details(models.Model):
                                  on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=155) 
-    thumbnail = models.ImageField(upload_to='img')
+    thumbnail = models.ImageField(upload_to='img', blank=True)
     
     description = models.TextField(max_length=1000)
     monthly_rent = models.DecimalField(max_digits=10,
