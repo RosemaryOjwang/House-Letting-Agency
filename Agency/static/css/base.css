@@ -319,6 +319,12 @@ h1, h3 {
 .password-reset > {
     color: #FFFFFF;
 }
+.edit_delete {
+  color:#0000ff;  
+}
+.back {
+    font-size: xx-large;
+}
 
 @media only screen and (max-width: 480px)    {
     /*for mobile phones*/
