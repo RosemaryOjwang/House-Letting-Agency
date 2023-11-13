@@ -1,7 +1,8 @@
 {% extends "Agency/base.html" %}
 {% block title %}{{ title }}{% endblock %}
 {% block content %}
-    
+
+<a href="{% url "user_admin" %}">&lt;&lt;BACK</a>
     <form method="post" actions="." enctype="multipart/form-data">
         <h3>{{ title }}</h3>
         {% csrf_token %}
