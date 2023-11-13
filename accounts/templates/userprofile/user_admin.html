@@ -1,4 +1,5 @@
 {% extends 'Agency/base.html' %}
+{% load static %}
 
 {% block title %}User Admin Site{% endblock %}
 
@@ -36,8 +37,10 @@
                 <div class="my-houses">
                     
                     <a class="afrontpage" href="{% url 'edit_house' house.id %}">
-                        <img class="my-housesImg" src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
-            static "img/no_image.png" %}{% endif %}">
+                        <img class="my-housesImg" src="{% if house.thumbnail %}{{ house.thumbnail.url }}
+                        {% else %}{% static "img/no_image.png" %}
+                        {% endif %}">
+                        
                     </a>
                     <br>
                     <a class="my-housesTitle" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
