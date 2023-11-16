@@ -12,13 +12,15 @@
     <img class="logo" src="{% static "img/logo.png" alt="logo" %}">
     <h1 class="co-name">Kamayuje House Letting Agency</h1>
     <nav>
-            <a href="{% url "about" %}">About</a>
-            <a href="{% url "user_admin" %}">Post a house</a>
-            <a href="/">Home</a>  
+            <a class="link" href="{% url "about" %}">About</a>
+            <a class="link" href="{% url "user_admin" %}">Post a house</a>
+            <a class="link" href="/">Home</a>  
             <div class="search">
                 <form method="get" action="/search/">
                     <input class="search-input" type="search" name="query" placeholder="Search...">
-                    <button class="search">Search</button>
+                    <button class="search">
+                        <img class="search_icon"src="{% static "img/Search Icon.png" alt="Search" %}" 
+                    </button>
                 </form>
             </div>          
     </nav>
