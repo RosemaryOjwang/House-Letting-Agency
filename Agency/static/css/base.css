@@ -288,9 +288,10 @@ h1, h3 {
     border: none;
 }
 .search-input   {
-    height: 30px;
+    height: 45px;
     margin-top: 20px;
     font-size: 20px;
+    border-radius: 15px;
 }
 .footer {
     color: blue;
