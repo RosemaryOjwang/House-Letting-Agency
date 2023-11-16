@@ -14,8 +14,7 @@ Search
         {% for house in houses %}
                 <div class="item">
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">
-                        <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% 
-            static "img/no_image.png" %}{% endif %}">
+                        <img src="{% if house.thumbnail %}{{ house.thumbnail.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                     </a>
                     <a class="afrontpage" href="{{ house.get_absolute_url }}">{{ house.title }}</a>
                     <br>
